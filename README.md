@@ -3,10 +3,10 @@
 ## My Assumptions
 * 3 views / sections have been created (2 admin views, 1 employee view)
 * Admin Views:
-  * Employee Management (Add, Update, Delete Employees) [/employee]
-  * Performance Review Management (Add, Update, Delete Review, Assign Employees for Feedback on Review) [/review]
+  * Employee Management (Add/remove/update/view employees) [/employee]
+  * Performance Review Management (Add/update/view performance reviews, Assign employees to participate in another employee's performance review) [/review]
 * Employee Views:
-  * Provide Feedback on Employee Review (List of Feedback requiring selected employee's feedback, update & delete feedback) [/feedback]
+  * Provide Feedback on Employee Review (List of Feedback requiring selected employee's feedback, Submit/update/remove feedback) [/feedback]
 
 ## Technologies Used
 * Language Used: JavaScript

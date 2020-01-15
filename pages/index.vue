@@ -6,10 +6,10 @@
     <ul>
       <li>3 views / sections have been created (2 admin views, 1 employee view)</li>
       <li><h4>Admin Views:</h4></li>
-      <li>-- Employee Management (Add, Update, Delete Employees) [/employee]</li>
-      <li>-- Performance Review Management (Add, Update, Delete Review, Assign Employees for Feedback on Review) [/review]</li>
+      <li>-- Employee Management (Add/remove/update/view employees) [/employee]</li>
+      <li>-- Performance Review Management (Add/update/view performance reviews, Assign employees to participate in another employee's performance review) [/review]</li>
       <li><h4>Employee Views:</h4></li>
-      <li>-- Provide Feedback on Employee Review (List of Feedback requiring selected employee's feedback, update & delete feedback) [/feedback]</li>
+      <li>-- Provide Feedback on Employee Review (List of Feedback requiring selected employee's feedback, Submit/update/remove feedback) [/feedback]</li>
     </ul>
     <v-row no-gutters>
       <h2>Technologies Used</h2>
