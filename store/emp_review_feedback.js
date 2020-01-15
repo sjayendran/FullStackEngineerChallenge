@@ -247,7 +247,6 @@ export const actions = {
         context.commit('startLoading');
         context.commit('updateLoadingMsg', `Fetching reviews...`);
         
-        console.log(`fetching all reviews from this URL: ${baseAPIURL+entity}`);
         this.$axios.$get(baseAPIURL+entity, {
             headers: {
                 'Content-Type': 'application/json',
@@ -291,7 +290,6 @@ export const actions = {
     },
     createEmployee(context, args){
         const entity = "employee";
-        console.log("#### reached employee creation with these args: ", args);
         context.commit('startLoading');
         context.commit('updateLoadingMsg', `Creating Employee...`);
         return this.$axios.$post(baseAPIURL+entity, {
