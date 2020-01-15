@@ -1,11 +1,5 @@
 const {dbConfig} = require('./sec.js');
 
-async function asyncForEach(array, callback) {
-    for (let index = 0; index < array.length; index++) {
-        await callback(array[index], index, array);
-    }
-}
-
 async function routes (fastify, options) {
     const cnxnString = `mysql://${dbConfig.username}:${dbConfig.pwd}@${dbConfig.server}:${dbConfig.port}/`;
     fastify.register(require('fastify-mysql'), {
