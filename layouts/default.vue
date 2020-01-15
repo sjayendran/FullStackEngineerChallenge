@@ -50,7 +50,7 @@ export default {
       fixed: false,
       headerMenuItems: [
         {
-          routeName: 'home',
+          routeName: 'index',
           routeIcon: 'mdi-home',
           humanName: 'Home',
           url: '/',
@@ -86,48 +86,48 @@ export default {
   //     this.checkUserAuthStatus();
   //   }, 900);
   // },
-  mounted(){
-    // this.fetchEmployees();
-  },
-  watch: {
-    // currentUser (val) {
-    //   if(!val){
-    //     console.log("user logged out successfully!")
-    //     this.gotoPage('/login');
-    //   }
-    //   else{
-    //     this.gotoPage('/');
-    //   }
-    // }
-  },
-  computed: {
-    currentUser(){
-      // return this.$store.state.emp_review_feedback.currentlyAuthenticatedEmployee;
-      console.log("#### THIS IS THE CURRENT EMPLOYEE: ", this.$store.state.emp_review_feedback.currentEmployee);
-      return this.$store.state.emp_review_feedback.currentEmployee;
-    },
-    currentlySelectedUser(){
-      return this.currentUser ? this.currentUser.emp_id : null;
-    },
-    employeeList(){
-      return this.$store.state.emp_review_feedback.employeeList;
-    }
-  },
+  // mounted(){
+  //   this.fetchEmployees();
+  // },
+  // watch: {
+  //   currentUser (val) {
+  //     if(!val){
+  //       console.log("user logged out successfully!")
+  //       this.gotoPage('/login');
+  //     }
+  //     else{
+  //       this.gotoPage('/');
+  //     }
+  //   }
+  // },
+  // computed: {
+  //   currentUser(){
+  //     // return this.$store.state.emp_review_feedback.currentlyAuthenticatedEmployee;
+  //     console.log("#### THIS IS THE CURRENT EMPLOYEE: ", this.$store.state.emp_review_feedback.currentEmployee);
+  //     return this.$store.state.emp_review_feedback.currentEmployee;
+  //   },
+  //   currentlySelectedUser(){
+  //     return this.currentUser ? this.currentUser.emp_id : null;
+  //   },
+  //   employeeList(){
+  //     return this.$store.state.emp_review_feedback.employeeList;
+  //   }
+  // },
   methods: {
-    fetchEmployees(){
-      console.log("#### going to try and fetch all entities on this route now: ", this.routeName);
-      this.$store.dispatch(`emp_review_feedback/getAllEmployees`)
-    },
-    gotoPage(pagePath){
-      this.$router.push({path: pagePath});
-    },
-    switchCurrentUser(val){
-      console.log("### this is the changed user: ", val);
-      if(!val)
-        this.$store.commit('emp_review_feedback/updateCurrentEmployee', null);
-      else
-        this.$store.commit('emp_review_feedback/updateCurrentEmployee', this.employeeList.find(x => x.emp_id = val));
-    }
+    // fetchEmployees(){
+    //   console.log("#### going to try and fetch all entities on this route now: ", this.routeName);
+    //   this.$store.dispatch(`emp_review_feedback/getAllEmployees`)
+    // },
+    // gotoPage(pagePath){
+    //   this.$router.push({path: pagePath});
+    // },
+    // switchCurrentUser(val){
+    //   console.log("### this is the changed user: ", val);
+    //   if(!val)
+    //     this.$store.commit('emp_review_feedback/updateCurrentEmployee', null);
+    //   else
+    //     this.$store.commit('emp_review_feedback/updateCurrentEmployee', this.employeeList.find(x => x.emp_id = val));
+    // }
     // checkUserAuthStatus(){
     //   console.log("### THIS IS THE CURRENT USER: ", this.currentUser);
     //   if(!this.authenticated){
