@@ -1,90 +1,43 @@
 <template>
-  <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+  <v-app>
     <v-app-bar
-      :clipped-left="clipped"
       fixed
       app
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
+      <v-icon left>mdi-account-group</v-icon>
       <v-toolbar-title v-text="title" />
       <v-spacer />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
+      <div>
+        <v-btn 
+          v-for="(item, i) in headerMenuItems"
+          :key="i"
+          :to="item.to" 
+          :color="$router.currentRoute.name == item.routeName ? 'purple' : ''" :href='item.url' text>
+          <v-icon left>{{item.routeIcon}}</v-icon>
+          {{item.humanName}}
+        </v-btn>
+      </div>
+      <!-- <v-col cols="2">
+        <v-select
+          :items="employeeList"
+          item-text="first_name"
+          item-value="emp_id"
+          label="Switch Current User"
+          :value="currentlySelectedUser"
+          @change="switchCurrentUser"
+          clearable
+          class="mt-6"
+        ></v-select>
+      </v-col> -->
+      <!-- <v-btn class="ma-2" text name="btn_logout" @click="logoutUser">
+        <v-icon left>mdi-logout</v-icon> Log out
+      </v-btn> -->
     </v-app-bar>
     <v-content>
       <v-container>
         <nuxt />
       </v-container>
     </v-content>
-    <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer
-      :fixed="fixed"
-      app
-    >
-      <span>&copy; 2019</span>
-    </v-footer>
   </v-app>
 </template>
 
@@ -93,25 +46,107 @@ export default {
   data () {
     return {
       clipped: false,
-      drawer: false,
+      drawer: true,
       fixed: false,
-      items: [
+      headerMenuItems: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
+          routeName: 'home',
+          routeIcon: 'mdi-home',
+          humanName: 'Home',
+          url: '/',
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
+          routeName: 'feedback',
+          routeIcon: 'mdi-file-document-box-multiple-outline',
+          humanName: 'Employee / Feedback',
+          url: '/feedback',
+        },
+        {
+          routeName: 'review',
+          routeIcon: 'mdi-trending-up',
+          humanName: 'Admin / Performance Reviews',
+          url: '/review',
+        },
+        {
+          routeName: 'employee',
+          routeIcon: 'mdi-account',
+          humanName: 'Admin / Employee Management',
+          url: '/employee',
         }
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'Employee Portal',
+      layoutSearchFilter: ''
     }
+  },
+  // created: function(){
+  //   setTimeout(() => {
+  //     this.checkUserAuthStatus();
+  //   }, 900);
+  // },
+  mounted(){
+    // this.fetchEmployees();
+  },
+  watch: {
+    // currentUser (val) {
+    //   if(!val){
+    //     console.log("user logged out successfully!")
+    //     this.gotoPage('/login');
+    //   }
+    //   else{
+    //     this.gotoPage('/');
+    //   }
+    // }
+  },
+  computed: {
+    currentUser(){
+      // return this.$store.state.emp_review_feedback.currentlyAuthenticatedEmployee;
+      console.log("#### THIS IS THE CURRENT EMPLOYEE: ", this.$store.state.emp_review_feedback.currentEmployee);
+      return this.$store.state.emp_review_feedback.currentEmployee;
+    },
+    currentlySelectedUser(){
+      return this.currentUser ? this.currentUser.emp_id : null;
+    },
+    employeeList(){
+      return this.$store.state.emp_review_feedback.employeeList;
+    }
+  },
+  methods: {
+    fetchEmployees(){
+      console.log("#### going to try and fetch all entities on this route now: ", this.routeName);
+      this.$store.dispatch(`emp_review_feedback/getAllEmployees`)
+    },
+    gotoPage(pagePath){
+      this.$router.push({path: pagePath});
+    },
+    switchCurrentUser(val){
+      console.log("### this is the changed user: ", val);
+      if(!val)
+        this.$store.commit('emp_review_feedback/updateCurrentEmployee', null);
+      else
+        this.$store.commit('emp_review_feedback/updateCurrentEmployee', this.employeeList.find(x => x.emp_id = val));
+    }
+    // checkUserAuthStatus(){
+    //   console.log("### THIS IS THE CURRENT USER: ", this.currentUser);
+    //   if(!this.authenticated){
+    //     console.log("### User not authenticated, redirecting to login page!");
+    //     setTimeout(() => {
+    //       this.gotoPage('/login');
+    //     }, 400);
+    //   }
+    //   else{
+    //     console.log("### User authenticated: ", this.currentUser);
+    //     this.gotoPage('/');
+    //   }
+    // },
+    // logoutUser(){
+    //   this.$store.dispatch(`emp_review_feedback/logoutUser`);
+    //   setTimeout(() => {
+    //     this.gotoPage('/login');
+    //   }, 400);
+    // }
   }
 }
 </script>

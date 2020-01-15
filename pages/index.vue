@@ -1,92 +1,33 @@
 <template>
-  <v-layout
-    column
-    justify-center
-    align-center
-  >
-    <v-flex
-      xs12
-      sm8
-      md6
-    >
-      <div class="text-center">
-        <logo />
-        <vuetify-logo />
-      </div>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
-          <p>
-            For more information on Vuetify, check out the <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-            >
-              documentation
-            </a>.
-          </p>
-          <p>
-            If you have questions, please join the official <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              title="chat"
-            >
-              discord
-            </a>.
-          </p>
-          <p>
-            Find a bug? Report it on the github <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              title="contribute"
-            >
-              issue board
-            </a>.
-          </p>
-          <p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3">
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-          >
-            Nuxt Documentation
-          </a>
-          <br>
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-          >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            nuxt
-            to="/inspire"
-          >
-            Continue
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-flex>
-  </v-layout>
+  <v-container class="grey lighten-5">
+    <v-row no-gutters>
+      <h2>Technologies Used</h2>
+    </v-row>
+    <ul>
+      <li>Language Used: JavaScript</li>
+      <li>JS Framework: Vue.JS / Node.js / NuxtJS / VueX</li>
+      <li>Front end framework: Vuetify.JS</li>
+      <li>Deployment platform: Heroku (https://paypay-challenge.herokuapp.com/)</li> 
+      <li>Backend / DB platform: MySQL (via https://remotemysql.com)</li>
+      <li><h4>Database Structure:</h4></li>
+      <li>-- Employee Table</li>
+      <li>-- Review Table</li>
+      <li>-- Feedback Table</li>
+      <li><h4>Server side API: Fastify via NuxtJS</h4></li>
+      <li>-- /api/employee [GET, POST, PATCH, DELETE]</li>
+      <li>-- /api/review [GET, POST, PATCH, DELETE]</li>
+      <li>-- /api/feedback [GET, POST, PATCH, DELETE]</li>
+    </ul>
+    <v-row no-gutters>
+      <h2>Assumptions</h2>
+    </v-row>
+    <ul>
+      <li>3 views / sections have been created (2 admin views, 1 employee view)</li>
+      <li><h4>Admin Views:</h4></li>
+      <li>-- Employee Management (Add, Update, Delete Employees) [/employee]</li>
+      <li>-- Performance Review Management (Add, Update, Delete Review, Assign Employees for Feedback on Review) [/review]</li>
+      <li><h4>Employee Views:</h4></li>
+      <li>-- Provide Feedback on Employee Review (List of Feedback requiring selected employee's feedback, update & delete feedback) [/feedback]</li>
+    </ul>
+  </v-container>
 </template>
-
-<script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
-
-export default {
-  components: {
-    Logo,
-    VuetifyLogo
-  }
-}
-</script>

@@ -3,6 +3,13 @@ const fastify = require('fastify')({
   logger: true
 })
 
+fastify.register(require('fastify-helmet'));
+fastify.register(require('fastify-cors'));
+fastify.register(require('fastify-rate-limit'), {
+  max: 500,
+  timeWindow: '1 minute'
+});
+
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
 config.dev = process.env.NODE_ENV !== 'production'
@@ -24,7 +31,12 @@ async function start () {
     await nuxt.ready()
   }
 
-  fastify.use(nuxt.render)
+  // fastify.use(nuxt.render)
+  // configuration to split routing of API and non-API routes using fastify 
+  fastify.register(require('./routes'), {prefix: '/api'})
+  fastify.get('*', (req, res)=>{
+    nuxt.render(req.req, res.res)
+  })
 
   fastify.listen(port, host, (err, address) => {
     if (err) {

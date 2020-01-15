@@ -11,10 +11,14 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt": "^2.0.0",
+    "@nuxtjs/axios": "^5.3.6",
     "cross-env": "^5.2.0",
-    "fastify": "^1.13.3",
-    "@nuxtjs/axios": "^5.3.6"
+    "fastify": "^2.10.0",
+    "fastify-cors": "^2.2.0",
+    "fastify-helmet": "^3.0.2",
+    "fastify-mysql": "^1.0.0",
+    "fastify-rate-limit": "^2.4.0",
+    "nuxt": "^2.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.9",

@@ -1,7 +1,6 @@
-# Full Stack Developer Challenge
-This is an interview challengs. Please feel free to fork. Pull Requests will be ignored.
+# Solution for Full Stack Developer Challenge
 
-## Requirements
+## Assumptions
 Design a web application that allows employees to submit feedback toward each other's performance review.
 
 *Partial solutions are acceptable.*  It is not necessary to submit a complete solution that implements every requirement.
@@ -37,3 +36,24 @@ Design a web application that allows employees to submit feedback toward each ot
 * Technology and design choices
 * Identify areas of your strengths
 * This is not a pass or fail test, this will serve as a common ground that we can deep dive together into specific issues
+
+> Solution for PayPay Fullstack Challenge
+
+## Build Setup
+
+``` bash
+# install dependencies
+$ npm run install
+
+# serve with hot reload at localhost:3000
+$ npm run dev
+
+# build for production and launch server
+$ npm run build
+$ npm run start
+
+# generate static project
+$ npm run generate
+```
+
+For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
