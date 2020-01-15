@@ -1,6 +1,17 @@
 <template>
   <v-container class="grey lighten-5">
     <v-row no-gutters>
+      <h2>Assumptions</h2>
+    </v-row>
+    <ul>
+      <li>3 views / sections have been created (2 admin views, 1 employee view)</li>
+      <li><h4>Admin Views:</h4></li>
+      <li>-- Employee Management (Add, Update, Delete Employees) [/employee]</li>
+      <li>-- Performance Review Management (Add, Update, Delete Review, Assign Employees for Feedback on Review) [/review]</li>
+      <li><h4>Employee Views:</h4></li>
+      <li>-- Provide Feedback on Employee Review (List of Feedback requiring selected employee's feedback, update & delete feedback) [/feedback]</li>
+    </ul>
+    <v-row no-gutters>
       <h2>Technologies Used</h2>
     </v-row>
     <ul>
@@ -17,17 +28,6 @@
       <li>-- /api/employee [GET, POST, PATCH, DELETE]</li>
       <li>-- /api/review [GET, POST, PATCH, DELETE]</li>
       <li>-- /api/feedback [GET, POST, PATCH, DELETE]</li>
-    </ul>
-    <v-row no-gutters>
-      <h2>Assumptions</h2>
-    </v-row>
-    <ul>
-      <li>3 views / sections have been created (2 admin views, 1 employee view)</li>
-      <li><h4>Admin Views:</h4></li>
-      <li>-- Employee Management (Add, Update, Delete Employees) [/employee]</li>
-      <li>-- Performance Review Management (Add, Update, Delete Review, Assign Employees for Feedback on Review) [/review]</li>
-      <li><h4>Employee Views:</h4></li>
-      <li>-- Provide Feedback on Employee Review (List of Feedback requiring selected employee's feedback, update & delete feedback) [/feedback]</li>
     </ul>
   </v-container>
 </template>
