@@ -69,6 +69,7 @@
           label="Writeup"
           counter
           placeholder="Write your performance review here..."
+          name="review_writeup"
         ></v-textarea>
         <v-combobox
           v-model="selected_feedback_employees"
@@ -77,6 +78,7 @@
           label="Feedback from these Employees (not including review employee)"
           multiple
           chips
+          name="feedbackEmplList"
         >
             <template v-slot:item="{ item, index }">
                 <span>{{ item.first_name }} {{ item.last_name }} ({{item.emp_id}}) [{{item.designation}} @ {{item.department}}]</span>
@@ -101,7 +103,7 @@
         </v-combobox>
         <v-btn
         color="green"
-        class="white--text"
+        class="white--text btnAddNewReview"
         :disabled="!formValid"
         @click="addNewReview"
         >

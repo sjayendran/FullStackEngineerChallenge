@@ -45,6 +45,7 @@
         :rules="[rules.required]"
         label="Employee ID"
         required
+        name="emp_id"
         ></v-text-field>
         <v-text-field
         v-model="emp_first_name"
@@ -52,6 +53,7 @@
         :rules="[rules.required]"
         label="First Name"
         required
+        name="emp_fname"
         ></v-text-field>
         <v-text-field
         v-model="emp_last_name"
@@ -59,23 +61,26 @@
         :rules="[rules.required]"
         label="Last Name"
         required
+        name="emp_lname"
         ></v-text-field>
         <v-text-field
         v-model="emp_department"
         :rules="[rules.required]"
         label="Department"
         required
+        name="emp_dept"
         ></v-text-field>
         <v-text-field
         v-model="emp_designation"
         :rules="[rules.required]"
         label="Designation"
         required
+        name="emp_designation"
         ></v-text-field>
         <!-- <v-checkbox label="Admin" class="mx-2" v-model="emp_admin"></v-checkbox> -->
         <v-btn
         color="green"
-        class="white--text"
+        class="white--text btnCreateNewEmployee"
         :disabled="!formValid"
         @click="addNewEmployee"
         >

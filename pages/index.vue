@@ -20,6 +20,7 @@
       <li>Front end framework: Vuetify.JS</li>
       <li>Deployment platform: Heroku (https://paypay-challenge.herokuapp.com/)</li> 
       <li>Backend / DB platform: MySQL (via https://remotemysql.com)</li>
+      <li>E2E Test framework: Cypress.IO (npm run test)</li>
       <li><h4>Database Structure:</h4></li>
       <li>-- Employee Table</li>
       <li>-- Review Table</li>

@@ -12,7 +12,7 @@
       ></v-text-field>
       <v-btn
         color="primary"
-        class="ma-2 white--text"
+        class="ma-2 white--text btnAddNewEmployee"
         :href="`/`+routeName+`/new`"
       >
         <v-icon left>mdi-account-plus</v-icon>

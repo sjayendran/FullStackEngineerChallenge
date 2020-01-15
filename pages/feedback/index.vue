@@ -69,6 +69,7 @@
                 :rules="[rules.required]"
                 label="Your Feedback"
                 required
+                name="feedback_writeup"
                 ></v-textarea>
               </v-form>
               <v-form
@@ -97,8 +98,8 @@
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn color="error" @click="view_dialog=false">{{dialog_mode ? 'Cancel' : 'Close'}}</v-btn>
-            <v-btn v-if="dialog_mode == 'edit'" color="primary" @click="updateAppEntity">Save</v-btn>
-            <v-btn v-else-if="dialog_mode == 'create'" color="success" @click="submitFeedback">Submit Feedback</v-btn>
+            <v-btn class="btnSaveFeedback" v-if="dialog_mode == 'edit'" color="primary" @click="updateAppEntity">Save</v-btn>
+            <v-btn class="btnSubmitFeedback" v-else-if="dialog_mode == 'create'" color="success" @click="submitFeedback">Submit Feedback</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -145,7 +146,7 @@
       </template>
       <template v-slot:item.actions="{ item }">
         <div v-if="!feedbackAlreadySubmitted(item._id)">
-          <v-btn small color="success" :disabled="!selected_employee" @click="provideFeedback(item)">{{ selected_employee ? 'Submit Feedback' : 'Select Employee Above First'}}</v-btn>
+          <v-btn class="btnProvideFeedback" small color="success" :disabled="!selected_employee" @click="provideFeedback(item)">{{ selected_employee ? 'Submit Feedback' : 'Select Employee Above First'}}</v-btn>
         </div>
         <div v-else>
           <v-btn small color="info" :disabled="!selected_employee" @click="editEntity(item)">Edit Feedback</v-btn>

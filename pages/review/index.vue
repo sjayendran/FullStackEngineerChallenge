@@ -12,7 +12,7 @@
       ></v-text-field>
       <v-btn
         color="primary"
-        class="ma-2 white--text"
+        class="ma-2 white--text btnAddNewReview"
         :href="`/`+routeName+`/new`"
       >
         <v-icon left>mdi-file-document-box-plus</v-icon>
