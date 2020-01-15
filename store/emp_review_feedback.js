@@ -1,4 +1,4 @@
-const baseAPIURL = `http://${process.env.NODE_ENV !== 'production' ? 'localhost' : process.env.HOST}:3000/api/`
+const baseAPIURL = `${process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : 'https://paypay-challenge.herokuapp.com/'}/api/`;
 export const state = () => ({
     employeeList: [],
     reviewList: [],
