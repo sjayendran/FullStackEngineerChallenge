@@ -1,4 +1,4 @@
-const baseAPIURL = "http://localhost:3000/api/"
+const baseAPIURL = `http://${process.env.NODE_ENV !== 'production' ? 'localhost' : process.env.HOST}:3000/api/`
 export const state = () => ({
     employeeList: [],
     reviewList: [],
@@ -105,7 +105,6 @@ export const actions = {
                 },
             })
             .then(function (response) {
-                console.log(`got back this response for ${entity}s: ${JSON.stringify(response)}`);
                 context.commit('updateFeedbackList', response.result);
                 context.commit('finishLoading');
             })
@@ -256,7 +255,6 @@ export const actions = {
             },
         })
         .then(function (response) {
-            console.log(`got back this response for ${entity}s: ${JSON.stringify(response)}`);
             context.commit('updateReviewList', response.result);
             context.commit('finishLoading');
         })
@@ -270,6 +268,7 @@ export const actions = {
         const entity = "employee";
         context.commit('startLoading');
         context.commit('updateLoadingMsg', `Fetching employees...`);
+        console.log("### going to try and get all employees from this URL: ", baseAPIURL+entity);
         
         this.$axios.$get(baseAPIURL+entity, {
             headers: {
